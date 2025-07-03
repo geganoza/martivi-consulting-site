@@ -6,10 +6,12 @@ export default function Banner() {
       className="mx-auto flex h-[600px] w-full max-w-[1728px] items-center justify-center
                  bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "url('/images/banner.png')",
+        backgroundImage: "url('/images/main banner.png')",
       }}
     >
-      {/* Optional overlay / heading can go here */}
+      <h1 className="text-center text-[72px] leading-[1] font-semibold text-white">
+        MAKE SUCCESS SIMPLE AGAIN
+      </h1>
     </section>
   );
 }

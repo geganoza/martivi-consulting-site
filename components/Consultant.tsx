@@ -6,10 +6,9 @@ export default function Consultant() {
   return (
     <section className="mx-auto mt-[80px] w-full max-w-[1728px] px-[100px]">
       <div className="flex flex-wrap justify-between gap-[20px]">
-        {/* left: consultant photo */}
         <div className="relative h-[754px] w-[754px] overflow-hidden rounded-[50px]">
           <Image
-            src="/images/lead consultant photo.png"
+            src="/images/lead consultant.png"
             alt="Lead consultant"
             fill
             className="object-cover object-center"
@@ -18,13 +17,30 @@ export default function Consultant() {
           />
         </div>
 
-        {/* right: highlight text */}
-        <div className="flex h-[754px] w-[754px] items-center justify-center bg-[#F3EFEF]">
-          <h2 className="text-center text-[48px] font-normal leading-tight text-black">
-            LEAD
-            <br />
-            CONSULTANT&nbsp;HIGHLIGHTS
-          </h2>
+        <div className="flex h-[754px] w-[754px] items-center justify-center">
+          <div className="flex flex-col items-center text-center text-[60px] leading-tight text-[#12324C] space-y-6">
+            <p className="font-extrabold">LEAD CONSULTANT</p>
+
+            <p>
+              Market&nbsp;Development
+              <br />
+              Manager&nbsp;at&nbsp;
+              <span className="font-extrabold">HEINEKEN</span>
+            </p>
+
+            <p>
+              Regional&nbsp;Sales
+              <br />
+              Manager&nbsp;at&nbsp;
+              <span className="font-extrabold">HENKEL</span>
+            </p>
+
+            <p>
+              Brand&nbsp;Manager&nbsp;at
+              <br />
+              <span className="font-extrabold">Moët&nbsp;Hennessy</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -3,9 +3,9 @@
 import Image from "next/image";
 
 const cards = [
-  { src: "/images/marketing banner.png", alt: "Marketing" },
-  { src: "/images/service banner.png", alt: "Service" },
-  { src: "/images/bd banner.png", alt: "Business Development" },
+  { src: "/images/marketing card.png", alt: "MARKETING" },
+  { src: "/images/sales card.png", alt: "SALES" },
+  { src: "/images/bd card.png", alt: "BUSINESS DEVELOPMENT" },
 ];
 
 export default function Services() {
@@ -25,6 +25,10 @@ export default function Services() {
               sizes="(max-width: 1728px) 33vw, 496px"
               priority
             />
+
+            <span className="absolute inset-0 flex items-center justify-center text-center text-[48px] leading-[1] font-semibold text-white">
+              {alt}
+            </span>
           </div>
         ))}
       </div>

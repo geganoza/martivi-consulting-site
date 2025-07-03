@@ -1,13 +1,12 @@
 "use client";
 
-import Header from "../components/Header";
-import Banner from "../components/Banner";
-import Services from "../components/Services";
-import Brands from "../components/Brands";
-import Consultant from "../components/Consultant";
-import ServiceBanner from "../components/ServiceBanner";
-import DiagonalBanners from "../components/DiagonalBanners";
-import ContactBanner from "@/components/ContactBanner";
+import Header from "@/components/Header";
+import Banner from "@/components/Banner";
+import Services from "@/components/Services";
+import Brands from "@/components/Brands";
+import Consultant from "@/components/Consultant";
+import NarrowBanner from "@/components/NarrowBanner";
+import DiagonalBanners from "@/components/DiagonalBanners";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -19,9 +18,17 @@ export default function Home() {
       <Services />
       <Brands />
       <Consultant />
-      <ServiceBanner />
+      <NarrowBanner
+        src="/images/services banner.png"
+        label="SERVICES"
+        alt="Services banner"
+      />
       <DiagonalBanners />
-      <ContactBanner />
+      <NarrowBanner
+        src="/images/contact banner.png"
+        label="CONTACT US"
+        alt="Contact banner"
+      />
       <ContactForm />
       <Footer />
     </div>
