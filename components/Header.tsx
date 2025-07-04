@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="mx-auto flex w-full max-w-[1728px] items-center justify-center px-6 py-8">
       <Image
-        src="/images/martivi consulting logo.png"
+        src="/images/martivi-consulting-logo.png"
         alt="MyLogo"
         width={240}
         height={120}

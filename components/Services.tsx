@@ -3,9 +3,9 @@
 import Image from "next/image";
 
 const cards = [
-  { src: "/images/marketing card.png", alt: "MARKETING" },
-  { src: "/images/sales card.png", alt: "SALES" },
-  { src: "/images/bd card.png", alt: "BUSINESS DEVELOPMENT" },
+  { src: "/images/marketing-card.png", alt: "MARKETING" },
+  { src: "/images/sales-card.png", alt: "SALES" },
+  { src: "/images/business-development-card.png", alt: "BUSINESS DEVELOPMENT" },
 ];
 
 export default function Services() {

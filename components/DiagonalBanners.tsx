@@ -11,7 +11,7 @@ type Row = {
 
 const rows: Row[] = [
   {
-    src: "/images/marketing banner.png",
+    src: "/images/marketing-banner.png",
     textFirst: true,
     title: "Marketing Consulting",
     bullets: [
@@ -25,7 +25,7 @@ const rows: Row[] = [
     ],
   },
   {
-    src: "/images/sales banner.png",
+    src: "/images/sales-banner.png",
     textFirst: false,
     title: "Sales Consulting",
     bullets: [
@@ -39,7 +39,7 @@ const rows: Row[] = [
     ],
   },
   {
-    src: "/images/bd banner.png",
+    src: "/images/business-development-banner.png",
     textFirst: true,
     title: "Business Development Consulting",
     bullets: [

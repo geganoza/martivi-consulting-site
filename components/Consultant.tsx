@@ -8,7 +8,7 @@ export default function Consultant() {
       <div className="flex flex-wrap justify-between gap-[20px]">
         <div className="relative h-[754px] w-[754px] overflow-hidden rounded-[50px]">
           <Image
-            src="/images/lead consultant.png"
+            src="/images/lead-consultant.png"
             alt="Lead consultant"
             fill
             className="object-cover object-center"
@@ -18,7 +18,7 @@ export default function Consultant() {
         </div>
 
         <div className="flex h-[754px] w-[754px] items-center justify-center">
-          <div className="flex flex-col items-center text-center text-[60px] leading-tight text-[#12324C] space-y-6">
+          <div className="flex flex-col items-center text-center text-[60px] leading-tight text-[#12324C] space-y-10">
             <p className="font-extrabold">LEAD CONSULTANT</p>
 
             <p>

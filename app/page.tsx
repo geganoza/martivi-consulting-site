@@ -1,7 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
-import Banner from "@/components/Banner";
+import Banner from "@/components/MainBanner";
 import Services from "@/components/Services";
 import Brands from "@/components/Brands";
 import Consultant from "@/components/Consultant";
@@ -19,13 +19,13 @@ export default function Home() {
       <Brands />
       <Consultant />
       <NarrowBanner
-        src="/images/services banner.png"
+        src="/images/services-banner.png"
         label="SERVICES"
         alt="Services banner"
       />
       <DiagonalBanners />
       <NarrowBanner
-        src="/images/contact banner.png"
+        src="/images/contact-banner.png"
         label="CONTACT US"
         alt="Contact banner"
       />
