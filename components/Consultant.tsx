@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function Consultant() {
   return (
-    <section className="mx-auto mt-[80px] w-full max-w-[1728px] px-[100px]">
+    <section className="section-wrap resp-px mt-[80px]">
       <div className="flex flex-wrap justify-between gap-[20px]">
-        <div className="relative h-[754px] w-[754px] overflow-hidden rounded-[50px]">
+        <div className="relative aspect-square w-full overflow-hidden rounded-[50px] 2xl:h-[754px] 2xl:w-[754px]">
           <Image
             src="/images/lead-consultant.png"
             alt="Lead consultant"
@@ -17,8 +17,8 @@ export default function Consultant() {
           />
         </div>
 
-        <div className="flex h-[754px] w-[754px] items-center justify-center">
-          <div className="flex flex-col items-center text-center text-[60px] leading-tight text-[#12324C] space-y-10">
+        <div className="flex w-full items-center justify-center 2xl:h-[754px] 2xl:w-[754px]">
+          <div className="flex flex-col items-center text-center text-[#12324C] space-y-10 text-[25px] leading-tight sm:text-[60px]">
             <p className="font-extrabold">LEAD CONSULTANT</p>
 
             <p>

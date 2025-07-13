@@ -37,12 +37,12 @@ const logos = brandDisplayNames.map((name) => {
 
 export default function Brands() {
   return (
-    <section className="mx-auto mt-[80px] w-full max-w-[1728px] px-[100px]">
-      <div className="grid grid-cols-6 gap-[20px]">
+    <section className="section-wrap resp-px mt-[80px]">
+      <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 gap-[20px]">
         {logos.map(({ src, alt }) => (
           <div
             key={alt}
-            className="relative h-[238px] w-[238px] overflow-hidden rounded-[50px]"
+            className="relative aspect-square w-full overflow-hidden rounded-[50px]"
           >
             <Image
               src={src}

@@ -3,8 +3,8 @@
 export default function Footer() {
   return (
     <footer
-      className="relative mx-auto flex h-[300px] w-full max-w-[1728px] items-center
-                 px-[100px] py-8 text-lg bg-cover bg-center bg-no-repeat"
+      className="section-wrap relative flex h-auto sm:h-[300px] items-center
+            resp-px py-8 text-base sm:text-lg bg-cover bg-center bg-no-repeat mt-[80px]"
       style={{ backgroundImage: "url('/images/footer-bg.png')" }}
     >
       <div className="flex w-full flex-wrap items-center justify-between gap-y-4">

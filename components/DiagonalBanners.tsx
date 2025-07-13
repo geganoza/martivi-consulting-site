@@ -56,18 +56,23 @@ const rows: Row[] = [
 
 export default function DiagonalBanners() {
   return (
-    <section className="mx-auto mt-[80px] flex w-full max-w-[1728px] flex-col gap-[80px] px-[100px]">
+    <section className="section-wrap resp-px mt-[80px] flex flex-col gap-[80px]">
       {rows.map(({ src, textFirst, title, bullets }) => (
-        <div key={title} className="flex flex-wrap justify-between gap-[20px]">
+        <div
+          key={title}
+          className="flex flex-col md:flex-row gap-[20px] justify-between"
+        >
           {textFirst && <TextBlock title={title} bullets={bullets} />}
 
-          <div className="relative h-[754px] w-[754px] overflow-hidden rounded-[50px]">
+          <div className="relative aspect-square w-full md:w-1/2 2xl:h-[754px] 2xl:w-[754px] overflow-hidden rounded-[50px]">
             <Image
               src={src}
               alt={title}
               fill
               className="object-cover object-center"
-              sizes="754px"
+              sizes="(max-width: 767px) 100vw,
+                     (max-width: 1728px) 50vw,
+                     754px"
               priority
             />
           </div>
@@ -81,13 +86,13 @@ export default function DiagonalBanners() {
 
 function TextBlock({ title, bullets }: { title: string; bullets: string[] }) {
   return (
-    <div className="flex h-[754px] w-[754px] items-center justify-center">
-      <div className="text-center text-[#12324C]">
-        <h2 className="mb-6 text-[48px] font-extrabold leading-tight">
+    <div className="flex w-full md:w-1/2 items-center justify-center 2xl:h-[754px] 2xl:w-[754px]">
+      <div className="w-full px-6 sm:px-10 text-[#12324C]">
+        <h2 className="mb-6 text-center text-[36px] md:text-[40px] xl:text-[48px]  font-extrabold leading-tight">
           {title}
         </h2>
 
-        <ol className="mx-auto max-w-[520px] list-decimal list-inside space-y-3 text-left text-[24px] leading-snug">
+        <ol className="mx-auto max-w-[520px] list-decimal list-inside space-y-3 text-left text-[18px] md:text-[20px] xl:text-[24px] leading-snug">
           {bullets.map((item) => (
             <li key={item}>{item}</li>
           ))}

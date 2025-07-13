@@ -10,23 +10,28 @@ const cards = [
 
 export default function Services() {
   return (
-    <section className="mx-auto mt-[80px] w-full max-w-[1728px] px-[100px]">
-      <div className="flex flex-wrap justify-between gap-[20px]">
+    <section className="section-wrap resp-px mt-[80px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {cards.map(({ src, alt }) => (
           <div
             key={alt}
-            className="relative h-[496px] w-[496px] overflow-hidden rounded-[50px]"
+            className="relative aspect-square w-full overflow-hidden rounded-[50px] md:max-w-[496px]"
           >
             <Image
               src={src}
               alt={alt}
               fill
+              sizes="(max-width: 767px) 100vw,
+                     (max-width: 1728px) 33vw,
+                     496px"
               className="object-cover object-center"
-              sizes="(max-width: 1728px) 33vw, 496px"
               priority
             />
 
-            <span className="absolute inset-0 flex items-center justify-center text-center text-[48px] leading-[1] font-semibold text-white">
+            <span
+              className="absolute inset-0 flex items-center justify-center text-center
+                             text-[32px] sm:text-[56px] md:text-[24px] lg:text-[35px] xl:text-[46px] 2xl:text-[48px] leading-[1] font-semibold text-white"
+            >
               {alt}
             </span>
           </div>

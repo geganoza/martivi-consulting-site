@@ -19,3 +19,13 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+.resp-px {
+  @apply px-5 sm:px-[60px] 2xl:px-[100px];
+}
+
+@layer utilities {
+  .section-wrap {
+    @apply mx-auto w-full sm:max-w-[1728px];
+  }
+}
