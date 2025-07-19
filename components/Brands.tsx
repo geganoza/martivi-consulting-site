@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import FadeInUp from "./FadeInUp";
 
 const brandDisplayNames = [
   "Alcorium",
@@ -40,18 +41,17 @@ export default function Brands() {
     <section className="section-wrap resp-px mt-[80px]">
       <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-6 gap-[20px]">
         {logos.map(({ src, alt }) => (
-          <div
-            key={alt}
-            className="relative aspect-square w-full overflow-hidden rounded-[50px]"
-          >
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              sizes="238px"
-              className="object-contain object-center"
-            />
-          </div>
+          <FadeInUp key={alt}>
+            <div className="relative aspect-square w-full overflow-hidden rounded-[50px]">
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes="238px"
+                className="object-contain object-center"
+              />
+            </div>
+          </FadeInUp>
         ))}
       </div>
     </section>

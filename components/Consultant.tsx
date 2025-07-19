@@ -1,23 +1,30 @@
 "use client";
 
 import Image from "next/image";
+import FadeInUp from "./FadeInUp";
 
 export default function Consultant() {
   return (
     <section className="section-wrap resp-px mt-[80px]">
       <div className="flex flex-wrap justify-between gap-[20px]">
-        <div className="relative aspect-square w-full overflow-hidden rounded-[50px] 2xl:h-[754px] 2xl:w-[754px]">
-          <Image
-            src="/images/lead-consultant.png"
-            alt="Lead consultant"
-            fill
-            className="object-cover object-center"
-            sizes="754px"
-            priority
-          />
-        </div>
+        <FadeInUp key="consultant-photo" className="w-full 2xl:w-[754px]">
+          <div className="relative aspect-square w-full overflow-hidden rounded-[50px] 2xl:h-[754px] 2xl:w-[754px]">
+            <Image
+              src="/images/lead-consultant.png"
+              alt="Lead consultant"
+              fill
+              className="object-cover object-center"
+              sizes="754px"
+              priority
+            />
+          </div>
+        </FadeInUp>
 
-        <div className="flex w-full items-center justify-center 2xl:h-[754px] 2xl:w-[754px]">
+        <FadeInUp
+          key="consultant-text"
+          delay={0.1}
+          className="flex w-full items-center justify-center 2xl:h-[754px] 2xl:w-[754px]"
+        >
           <div className="flex flex-col items-center text-center text-[#12324C] space-y-10 text-[25px] leading-tight sm:text-[60px]">
             <p className="font-extrabold">LEAD CONSULTANT</p>
 
@@ -41,7 +48,7 @@ export default function Consultant() {
               <span className="font-extrabold">Moët&nbsp;Hennessy</span>
             </p>
           </div>
-        </div>
+        </FadeInUp>
       </div>
     </section>
   );

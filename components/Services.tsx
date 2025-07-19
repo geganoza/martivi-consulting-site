@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import FadeInUp from "./FadeInUp";
 
 const cards = [
   { src: "/images/marketing-card.png", alt: "MARKETING" },
@@ -13,7 +14,7 @@ export default function Services() {
     <section className="section-wrap resp-px mt-[80px]">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
         {cards.map(({ src, alt }) => (
-          <div
+          <FadeInUp
             key={alt}
             className="relative aspect-square w-full overflow-hidden rounded-[50px] md:max-w-[496px]"
           >
@@ -34,7 +35,7 @@ export default function Services() {
             >
               {alt}
             </span>
-          </div>
+          </FadeInUp>
         ))}
       </div>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import FadeInUp from "./FadeInUp";
 
 type Row = {
   src: string;
@@ -62,22 +63,35 @@ export default function DiagonalBanners() {
           key={title}
           className="flex flex-col md:flex-row gap-[20px] justify-between"
         >
-          {textFirst && <TextBlock title={title} bullets={bullets} />}
+          <FadeInUp
+            key={`${title}-text`}
+            className={`w-full md:w-1/2 ${
+              textFirst ? "md:order-1" : "md:order-2"
+            }`}
+          >
+            <TextBlock title={title} bullets={bullets} />
+          </FadeInUp>
 
-          <div className="relative aspect-square w-full md:w-1/2 2xl:h-[754px] 2xl:w-[754px] overflow-hidden rounded-[50px]">
-            <Image
-              src={src}
-              alt={title}
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 767px) 100vw,
-                     (max-width: 1728px) 50vw,
-                     754px"
-              priority
-            />
-          </div>
-
-          {!textFirst && <TextBlock title={title} bullets={bullets} />}
+          <FadeInUp
+            key={`${title}-img`}
+            delay={0.1}
+            className={`w-full md:w-1/2 ${
+              textFirst ? "md:order-2" : "md:order-1"
+            }`}
+          >
+            <div className="relative aspect-square w-full overflow-hidden rounded-[50px] 2xl:h-[754px] 2xl:w-[754px]">
+              <Image
+                src={src}
+                alt={title}
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 767px) 100vw,
+                       (max-width: 1728px) 50vw,
+                       754px"
+                priority
+              />
+            </div>
+          </FadeInUp>
         </div>
       ))}
     </section>
