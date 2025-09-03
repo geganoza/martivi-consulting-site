@@ -24,7 +24,7 @@ export default function Header() {
         </Link>
         <span>|</span>
         <Link
-          href="/ka"
+          href="/"
           className="rounded px-3 py-1 text-sm underline-offset-4 hover:underline"
         >
           GEO
