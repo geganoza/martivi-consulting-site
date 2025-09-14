@@ -1,8 +1,11 @@
 "use client";
 
 import FadeInUp from "./FadeInUp";
+import { useI18n } from "@/locales/client";
 
 export default function MainBanner() {
+  const t = useI18n();
+
   return (
     <FadeInUp className="w-full">
       <section
@@ -12,7 +15,7 @@ export default function MainBanner() {
         }}
       >
         <h1 className="text-center text-[58px] sm:text-[72px] leading-[1] font-semibold text-white ">
-          MAKE SUCCESS SIMPLE AGAIN
+          {t("banner.slogan")}
         </h1>
       </section>
     </FadeInUp>

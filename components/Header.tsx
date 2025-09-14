@@ -1,9 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useI18n } from "@/locales/client";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
+  const t = useI18n();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const currentLocale = pathname.startsWith("/ka") ? "ka" : "en";
+
+  const handleLanguageChange = (locale: "en" | "ka") => {
+    if (locale === "en") {
+      router.push("/");
+    } else {
+      router.push("/ka");
+    }
+  };
+
   return (
     <header className="section-wrap flex items-center justify-center resp-px py-6 sm:py-8">
       <Image
@@ -16,19 +31,23 @@ export default function Header() {
       />
 
       <nav className="ml-auto flex items-center gap-2 sm:gap-4 text-sm">
-        <Link
-          href="/"
-          className="rounded px-3 py-1 text-sm underline-offset-4 hover:underline"
+        <button
+          onClick={() => handleLanguageChange("en")}
+          className={`rounded px-3 py-1 text-sm underline-offset-4 ${
+            currentLocale === "en" ? "font-bold" : "hover:text-[#1390ac]"
+          }`}
         >
-          ENG
-        </Link>
+          {t("header.eng")}
+        </button>
         <span>|</span>
-        <Link
-          href="/"
-          className="rounded px-3 py-1 text-sm underline-offset-4 hover:underline"
+        <button
+          onClick={() => handleLanguageChange("ka")}
+          className={`rounded px-3 py-1 text-sm underline-offset-4 ${
+            currentLocale === "ka" ? "font-bold" : "hover:text-[#1390ac]"
+          }`}
         >
-          GEO
-        </Link>
+          {t("header.geo")}
+        </button>
       </nav>
     </header>
   );

@@ -1,5 +1,5 @@
-/* app/components/FadeInUp.tsx */
 "use client";
+
 import { motion } from "framer-motion";
 
 interface FadeInUpProps {

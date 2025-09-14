@@ -1,6 +1,10 @@
 "use client";
 
+import { useI18n } from "@/locales/client";
+
 export default function Footer() {
+  const t = useI18n();
+
   return (
     <footer
       className="section-wrap relative flex h-auto sm:h-[300px] items-center
@@ -8,7 +12,7 @@ export default function Footer() {
       style={{ backgroundImage: "url('/images/footer-bg.png')" }}
     >
       <div className="flex w-full flex-wrap items-center justify-between gap-y-4">
-        <p className="text-white">© 2025 MARTIVI CONSULTING</p>
+        <p className="text-white">{t("footer.copyright")}</p>
         <address className="flex flex-wrap items-center gap-x-3 gap-y-2 not-italic text-white">
           <a
             href="mailto:contact@martiviconsulting.com"
@@ -33,7 +37,7 @@ export default function Footer() {
             >
               <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
             </svg>
-            Planet&nbsp;Earth
+            {t("footer.location")}{" "}
           </span>
         </address>
       </div>

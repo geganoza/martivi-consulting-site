@@ -2,13 +2,19 @@
 
 import Image from "next/image";
 import FadeInUp from "./FadeInUp";
+import { useI18n } from "@/locales/client";
 
 export default function Consultant() {
+  const t = useI18n();
+
   return (
     <section className="section-wrap resp-px mt-[80px]">
-      <div className="flex flex-wrap justify-between gap-[20px]">
-        <FadeInUp key="consultant-photo" className="w-full 2xl:w-[754px]">
-          <div className="relative aspect-square w-full overflow-hidden rounded-[50px] 2xl:h-[754px] 2xl:w-[754px]">
+      <div className="flex flex-wrap 2xl:flex-nowrap gap-[20px] justify-start">
+        <FadeInUp
+          key="consultant-photo"
+          className="w-full 2xl:basis-[calc(50%-10px)] 2xl:shrink-0"
+        >
+          <div className="relative w-full aspect-square overflow-hidden rounded-[50px]">
             <Image
               src="/images/lead-consultant.png"
               alt="Lead consultant"
@@ -23,29 +29,32 @@ export default function Consultant() {
         <FadeInUp
           key="consultant-text"
           delay={0.1}
-          className="flex w-full items-center justify-center 2xl:h-[754px] 2xl:w-[754px]"
+          className="flex w-full 2xl:basis-[calc(50%-10px)] 2xl:shrink-0 items-center justify-center"
         >
-          <div className="flex flex-col items-center text-center text-[#12324C] space-y-10 text-[25px] leading-tight sm:text-[60px]">
-            <p className="font-extrabold">LEAD CONSULTANT</p>
+          <div className="flex flex-col items-center text-center text-[#12324C] space-y-10 text-[25px] leading-tight sm:text-[55px]">
+            <p className="font-extrabold">{t("consultant.title")}</p>
 
             <p>
-              Market&nbsp;Development
+              {t("consultant.positionDevelopment")}
               <br />
-              Manager&nbsp;at&nbsp;
-              <span className="font-extrabold">HEINEKEN</span>
+              {t("consultant.positionManager")}&nbsp;
+              <span className="font-extrabold">{t("consultant.heineken")}</span>
+              {t("consultant.in")}
             </p>
 
             <p>
-              Regional&nbsp;Sales
+              {t("consultant.positionSales")}
               <br />
-              Manager&nbsp;at&nbsp;
-              <span className="font-extrabold">HENKEL</span>
+              {t("consultant.positionManager")}&nbsp;
+              <span className="font-extrabold">{t("consultant.henkel")}</span>
+              {t("consultant.in")}
             </p>
 
             <p>
-              Brand&nbsp;Manager&nbsp;at
+              {t("consultant.positionBrand")}
               <br />
-              <span className="font-extrabold">Moët&nbsp;Hennessy</span>
+              <span className="font-extrabold">{t("consultant.moet")}</span>
+              {t("consultant.in")}
             </p>
           </div>
         </FadeInUp>
