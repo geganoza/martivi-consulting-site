@@ -122,7 +122,7 @@ function TextBlock({ title, bullets }: { title: string; bullets: string[] }) {
           {title}
         </h2>
 
-        <ol className="mx-auto max-w-[520px] list-decimal list-inside space-y-3 text-left text-[18px] md:text-[20px] xl:text-[24px] leading-snug">
+        <ol className="mx-auto max-w-[520px] list-disc list-inside space-y-3 text-left text-[18px] md:text-[20px] xl:text-[24px] leading-snug">
           {bullets.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
