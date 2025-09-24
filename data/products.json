@@ -1,114 +1,238 @@
 [
   {
-    "id": "P1001",
-    "name": "Atlas Wireless Headphones",
-    "price": 129.99,
-    "currency": "USD",
-    "stock": 24,
-    "availability": "in_stock",
-    "category": "audio",
-    "attributes": {
-      "color": "black",
-      "battery_hours": 30,
-      "wifi_enabled": false
-    }
-  },
-  {
-    "id": "P1002",
-    "name": "Atlas Wired Headphones",
-    "price": 59.99,
-    "currency": "USD",
+    "id": "2251",
+    "sku": "მწვანე სადა ქუდი",
+    "type": "variable",
+    "name": "მწვანე სადა ქუდი",
+    "price": null,
+    "currency": "GEL",
     "stock": 0,
     "availability": "out_of_stock",
-    "category": "audio",
+    "categories": [
+      "ქუდები > სადა ქუდები"
+    ],
+    "images": [
+      "https://bebias.ge/wp-content/uploads/მწვანე-ქუდი.jpg",
+      "https://bebias.ge/wp-content/uploads/შეფუთვა.png"
+    ],
     "attributes": {
-      "color": "white",
-      "battery_hours": 0,
-      "wifi_enabled": false
+      "ზომა": [
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS",
+        "XXXS"
+      ],
+      "ფერი": "მწვანე",
+      "სარჩული": "შუბლის გარშემო",
+      "მატერია": "თუშური შალი"
     }
   },
   {
-    "id": "P2001",
-    "name": "Orion Smartwatch 42mm",
-    "price": 199.0,
-    "currency": "USD",
-    "stock": 12,
+    "id": "2258",
+    "sku": "მუქი ყავისფერი სადა ქუდი",
+    "type": "variable",
+    "name": "მუქი ყავისფერი სადა ქუდი",
+    "price": null,
+    "currency": "GEL",
+    "stock": 0,
+    "availability": "out_of_stock",
+    "categories": [
+      "ქუდები > სადა ქუდები"
+    ],
+    "images": [
+      "https://bebias.ge/wp-content/uploads/მუქი-ყავისფერი-ქუდი.jpg",
+      "https://bebias.ge/wp-content/uploads/შეფუთვა.png"
+    ],
+    "attributes": {
+      "ზომა": [
+        "L",
+        "M",
+        "S",
+        "XS"
+      ],
+      "ფერი": "ყავისფერი",
+      "სარჩული": "შუბლის გარშემო",
+      "მატერია": "თუშური შალი"
+    }
+  },
+  {
+    "id": "2265",
+    "sku": "მუქი ლურჯი სადა ქუდი",
+    "type": "variable",
+    "name": "მუქი ლურჯი სადა ქუდი",
+    "price": null,
+    "currency": "GEL",
+    "stock": 0,
+    "availability": "out_of_stock",
+    "categories": [
+      "ქუდები > სადა ქუდები"
+    ],
+    "images": [
+      "https://bebias.ge/wp-content/uploads/მუქი-ლურჯი-ქუდი.jpg",
+      "https://bebias.ge/wp-content/uploads/შეფუთვა.png"
+    ],
+    "attributes": {
+      "ზომა": [
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XXS",
+        "XXXS"
+      ],
+      "ფერი": "ლურჯი",
+      "სარჩული": "შუბლის გარშემო",
+      "მატერია": "თუშური შალი"
+    }
+  },
+  {
+    "id": "2272",
+    "sku": "თეთრი შეუღებავი შალის სადა ქუდი",
+    "type": "variable",
+    "name": "თეთრი შეუღებავი შალის სადა ქუდი",
+    "price": null,
+    "currency": "GEL",
+    "stock": 4,
     "availability": "in_stock",
-    "category": "wearables",
+    "categories": [
+      "ქუდები > ბუნებრივი ფერის ქუდები",
+      "ქუდები > სადა ქუდები"
+    ],
+    "images": [
+      "https://bebias.ge/wp-content/uploads/კრემისფერი-ქუდი.jpg",
+      "https://bebias.ge/wp-content/uploads/IMG_5140-2.jpg",
+      "https://bebias.ge/wp-content/uploads/შეფუთვა.png"
+    ],
     "attributes": {
-      "color": "silver",
-      "water_resistant": true,
-      "gps": true
+      "ზომა": [
+        "L",
+        "M",
+        "S",
+        "XS"
+      ],
+      "ფერი": "თეთრი",
+      "სარჩული": "შუბლის გარშემო",
+      "მატერია": "თუშური შალი"
     }
   },
   {
-    "id": "P3001",
-    "name": "Lumen Desk Lamp Pro",
-    "price": 79.5,
-    "currency": "USD",
-    "stock": 5,
-    "availability": "in_stock",
-    "category": "home",
-    "attributes": {
-      "color": "matte black",
-      "lumens": 1200,
-      "dimmable": true
-    }
-  },
-  {
-    "id": "P4001",
-    "name": "Nova Portable Charger 10000mAh",
-    "price": 34.99,
-    "currency": "USD",
-    "stock": 100,
-    "availability": "in_stock",
-    "category": "accessories",
-    "attributes": {
-      "color": "gray",
-      "capacity_mAh": 10000,
-      "fast_charge": true
-    }
-  },
-  {
-    "id": "P5001",
-    "name": "Terra Running Shoes - Men's",
-    "price": 89.99,
-    "currency": "USD",
-    "stock": 40,
-    "availability": "in_stock",
-    "category": "apparel",
-    "attributes": {
-      "color": "blue",
-      "sizes": ["40","41","42","43","44"],
-      "material": "mesh"
-    }
-  },
-  {
-    "id": "P5002",
-    "name": "Terra Running Shoes - Women's",
-    "price": 89.99,
-    "currency": "USD",
-    "stock": 18,
-    "availability": "in_stock",
-    "category": "apparel",
-    "attributes": {
-      "color": "pink",
-      "sizes": ["36","37","38","39","40"],
-      "material": "mesh"
-    }
-  },
-  {
-    "id": "P6001",
-    "name": "Aurora 4K Monitor 27\"",
-    "price": 349.0,
-    "currency": "USD",
+    "id": "2286",
+    "sku": "ყავისფერი ქუდი პომპონით",
+    "type": "variable",
+    "name": "ყავისფერი ქუდი პომპონით",
+    "price": null,
+    "currency": "GEL",
     "stock": 3,
-    "availability": "low_stock",
-    "category": "displays",
+    "availability": "in_stock",
+    "categories": [
+      "ქუდები > პომპონიანი ქუდები"
+    ],
+    "images": [
+      "https://bebias.ge/wp-content/uploads/ყავისფერი-ქუდი-პომპონით.jpg",
+      "https://bebias.ge/wp-content/uploads/IMG_5180-1.jpg",
+      "https://bebias.ge/wp-content/uploads/შეფუთვა.png"
+    ],
     "attributes": {
-      "resolution": "3840x2160",
-      "panel": "IPS",
-      "refresh_rate": 60
+      "ზომა": [
+        "L",
+        "M",
+        "S",
+        "XS"
+      ],
+      "ფერი": "ყავისფერი",
+      "სარჩული": "შუბლის გარშემო",
+      "მატერია": "თუშური შალი"
+    }
+  },
+  {
+    "id": "2287",
+    "sku": "ყავისფერი ქუდი პომპონით L",
+    "type": "variation",
+    "name": "ყავისფერი ქუდი პომპონით - L",
+    "price": 54,
+    "currency": "GEL",
+    "stock": 1,
+    "availability": "in_stock",
+    "categories": [],
+    "images": [],
+    "attributes": {
+      "ზომა": "L"
+    }
+  },
+  {
+    "id": "2288",
+    "sku": "ყავისფერი ქუდი პომპონით M",
+    "type": "variation",
+    "name": "ყავისფერი ქუდი პომპონით - M",
+    "price": 54,
+    "currency": "GEL",
+    "stock": 0,
+    "availability": "out_of_stock",
+    "categories": [],
+    "images": [],
+    "attributes": {
+      "ზომა": "M"
+    }
+  },
+  {
+    "id": "2289",
+    "sku": "ყავისფერი ქუდი პომპონით S",
+    "type": "variation",
+    "name": "ყავისფერი ქუდი პომპონით - S",
+    "price": 54,
+    "currency": "GEL",
+    "stock": 2,
+    "availability": "in_stock",
+    "categories": [],
+    "images": [],
+    "attributes": {
+      "ზომა": "S"
+    }
+  },
+  {
+    "id": "2290",
+    "sku": "ყავისფერი ქუდი პომპონით XS",
+    "type": "variation",
+    "name": "ყავისფერი ქუდი პომპონით - XS",
+    "price": 54,
+    "currency": "GEL",
+    "stock": 0,
+    "availability": "out_of_stock",
+    "categories": [],
+    "images": [],
+    "attributes": {
+      "ზომა": "XS"
+    }
+  },
+  {
+    "id": "2293",
+    "sku": "ყავისფერი სადა ქუდი",
+    "type": "variable",
+    "name": "ყავისფერი სადა ქუდი",
+    "price": null,
+    "currency": "GEL",
+    "stock": 6,
+    "availability": "in_stock",
+    "categories": [
+      "ქუდები > სადა ქუდები"
+    ],
+    "images": [
+      "https://bebias.ge/wp-content/uploads/ყავისფერი-ქუდი.jpg",
+      "https://bebias.ge/wp-content/uploads/IMG_5189-1-e1737139036529.jpg",
+      "https://bebias.ge/wp-content/uploads/შეფუთვა.png"
+    ],
+    "attributes": {
+      "ზომა": [
+        "L",
+        "M",
+        "S",
+        "XS"
+      ],
+      "ფერი": "ყავისფერი",
+      "სარჩული": "შუბლის გარშემო",
+      "მატერია": "თუშური შალი"
     }
   }
 ]
