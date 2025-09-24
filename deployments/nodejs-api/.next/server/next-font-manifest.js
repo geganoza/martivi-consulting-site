@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/giorginozadze/Documents/MARTIVI CONSULTING WEBSITE/app/layout":["static/media/904be59b21bd51cb-s.p.woff2","static/media/93f479601ee12b01-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "P1001",
+    "name": "Atlas Wireless Headphones",
+    "price": 129.99,
+    "currency": "USD",
+    "stock": 24,
+    "availability": "in_stock",
+    "category": "audio",
+    "attributes": {
+      "color": "black",
+      "battery_hours": 30,
+      "wifi_enabled": false
+    }
+  },
+  {
+    "id": "P1002",
+    "name": "Atlas Wired Headphones",
+    "price": 59.99,
+    "currency": "USD",
+    "stock": 0,
+    "availability": "out_of_stock",
+    "category": "audio",
+    "attributes": {
+      "color": "white",
+      "battery_hours": 0,
+      "wifi_enabled": false
+    }
+  },
+  {
+    "id": "P2001",
+    "name": "Orion Smartwatch 42mm",
+    "price": 199.0,
+    "currency": "USD",
+    "stock": 12,
+    "availability": "in_stock",
+    "category": "wearables",
+    "attributes": {
+      "color": "silver",
+      "water_resistant": true,
+      "gps": true
+    }
+  },
+  {
+    "id": "P3001",
+    "name": "Lumen Desk Lamp Pro",
+    "price": 79.5,
+    "currency": "USD",
+    "stock": 5,
+    "availability": "in_stock",
+    "category": "home",
+    "attributes": {
+      "color": "matte black",
+      "lumens": 1200,
+      "dimmable": true
+    }
+  },
+  {
+    "id": "P4001",
+    "name": "Nova Portable Charger 10000mAh",
+    "price": 34.99,
+    "currency": "USD",
+    "stock": 100,
+    "availability": "in_stock",
+    "category": "accessories",
+    "attributes": {
+      "color": "gray",
+      "capacity_mAh": 10000,
+      "fast_charge": true
+    }
+  },
+  {
+    "id": "P5001",
+    "name": "Terra Running Shoes - Men's",
+    "price": 89.99,
+    "currency": "USD",
+    "stock": 40,
+    "availability": "in_stock",
+    "category": "apparel",
+    "attributes": {
+      "color": "blue",
+      "sizes": ["40","41","42","43","44"],
+      "material": "mesh"
+    }
+  },
+  {
+    "id": "P5002",
+    "name": "Terra Running Shoes - Women's",
+    "price": 89.99,
+    "currency": "USD",
+    "stock": 18,
+    "availability": "in_stock",
+    "category": "apparel",
+    "attributes": {
+      "color": "pink",
+      "sizes": ["36","37","38","39","40"],
+      "material": "mesh"
+    }
+  },
+  {
+    "id": "P6001",
+    "name": "Aurora 4K Monitor 27\"",
+    "price": 349.0,
+    "currency": "USD",
+    "stock": 3,
+    "availability": "low_stock",
+    "category": "displays",
+    "attributes": {
+      "resolution": "3840x2160",
+      "panel": "IPS",
+      "refresh_rate": 60
+    }
+  }
+]

@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST='{"components/ClientChatWidget.tsx -> ./ChatWidget":{"id":797,"files":["static/chunks/797.1cd8138d5ceb88f9.js"]},"locales/client.ts -> ./en":{"id":1645,"files":["static/chunks/645.cdd126299e657dff.js"]},"locales/client.ts -> ./ka":{"id":4666,"files":["static/chunks/666.7c6098b33d78d44f.js"]}}';

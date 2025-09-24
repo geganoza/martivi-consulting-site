@@ -1,156 +1,127 @@
-export const runtime = "nodejs";
+import { NextResponse } from "next/server";
+import fs from "fs/promises";
+import path from "path";
 
-import { NextRequest, NextResponse } from "next/server";
-import OpenAI from "openai";
-import { z } from "zod";
-
-// -------- Env --------
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY ?? "";
-const CALENDLY =
-  process.env.NEXT_PUBLIC_CALENDLY_LINK ??
-  "https://calendly.com/martividigital/30min";
-const WEBHOOK = process.env.LEAD_WEBHOOK_URL ?? "";
-/**
- * Comma-separated allowlist. Example:
- * "https://martiviconsulting.com, https://www.martiviconsulting.com"
- */
-const ALLOW_ORIGINS = (process.env.CORS_ORIGIN ?? "")
-  .split(",")
-  .map(s => s.trim())
-  .filter(Boolean);
-
-// -------- OpenAI --------
-const client = new OpenAI({ apiKey: OPENAI_API_KEY });
-
-// -------- Types / Schema --------
-type Role = "system" | "user" | "assistant";
-type ChatMessage = { role: Role; content: string };
-type Lead = {
-  name?: string;
-  email?: string;
-  company?: string;
-  budget?: string;
-  timeline?: string;
-  country?: string;
+type Message = { role: "system" | "user" | "assistant"; content: string };
+type Product = {
+  id: string;
+  name: string;
+  price: number;
+  currency?: string;
+  stock: number;
+  availability?: string;
+  category?: string;
+  attributes?: Record<string, any>;
 };
 
-const BodySchema = z.object({
-  messages: z
-    .array(
-      z.object({
-        role: z.enum(["system", "user", "assistant"]),
-        content: z.string(),
-      })
-    )
-    .default([]),
-  lead: z
-    .object({
-      name: z.string().optional(),
-      email: z.string().optional(),
-      company: z.string().optional(),
-      budget: z.string().optional(),
-      timeline: z.string().optional(),
-      country: z.string().optional(),
-    })
-    .optional(),
-});
-
-// -------- CORS helper (echo requesting origin if allowed) --------
-function corsHeaders(req: NextRequest) {
-  const origin = req.headers.get("origin") || "";
-  const allow =
-    ALLOW_ORIGINS.length === 0
-      ? "*" // no allowlist configured: allow all (useful for local testing)
-      : ALLOW_ORIGINS.includes(origin)
-      ? origin // echo exact origin (fixes www vs non-www)
-      : ALLOW_ORIGINS[0]; // default to first allowed
-
-  return {
-    "Access-Control-Allow-Origin": allow,
-    "Access-Control-Allow-Methods": "POST, OPTIONS, GET",
-    "Access-Control-Allow-Headers": "Content-Type",
-    Vary: "Origin",
-  };
+async function loadProducts(): Promise<Product[]> {
+  const file = path.join(process.cwd(), "data", "products.json");
+  const txt = await fs.readFile(file, "utf8");
+  return JSON.parse(txt) as Product[];
 }
 
-function json(req: NextRequest, body: unknown, init?: number | ResponseInit) {
-  const base: ResponseInit =
-    typeof init === "number" ? { status: init } : init ?? {};
-  return NextResponse.json(body, {
-    ...base,
-    headers: { ...(base.headers || {}), ...corsHeaders(req) },
-  });
+function detectGeorgian(text: string) {
+  return /[\u10A0-\u10FF]/.test(text);
 }
 
-// -------- Routes --------
-const SYSTEM_PROMPT = `You are MARTIVI CONSULTING’s assistant.
-Goals:
-1) Understand the user’s need in 2–3 short questions max.
-2) Explain services clearly, concise, in the user's language (Eng/Geo).
-3) Always offer: free 20-min discovery call (${CALENDLY}), or leave contacts.
-4) If unsure, ask 1 clarifying question; do not invent facts.
-5) Collect lead fields when the user shows purchase intent:
-   - Full name, Email, Company (optional), Budget range, Timeline, Country.
-Tone: warm, expert, practical. Keep answers under 8 sentences unless asked.`;
-
-// Healthcheck
-export async function GET(req: NextRequest) {
-  return json(req, { ok: true });
+function fmtProductShort(p: Product, isKa: boolean) {
+  const price = `${p.price}${p.currency ? " " + p.currency : ""}`;
+  const avail = p.stock > 0 ? (isKa ? " наличია" : "in stock") : (isKa ? " არ არის наличი" : "out of stock");
+  // For Georgian we keep simple translations inline
+  if (isKa) {
+    return `${p.name} (კოდი: ${p.id}) — ფასი: ${price}, რაოდენობა: ${p.stock}, კატეგორია: ${p.category || "-"}`;
+  }
+  return `${p.name} (id: ${p.id}) — price: ${price}, stock: ${p.stock}, category: ${p.category || "-"}`;
 }
 
-// Preflight
-export async function OPTIONS(req: NextRequest) {
-  return new NextResponse(null, { status: 204, headers: corsHeaders(req) });
-}
-
-// Chat
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
-    if (!OPENAI_API_KEY) return json(req, { error: "OPENAI_API_KEY missing" }, 500);
+    const body = await req.json();
+    const messages: Message[] = body.messages ?? [];
+    const lead = body.lead;
+    const lastUser = [...messages].reverse().find((m) => m.role === "user")?.content ?? "";
+    const isKa = detectGeorgian(lastUser);
 
-    const parsed = BodySchema.parse(await req.json());
-    const trimmed: ChatMessage[] = (parsed.messages ?? []).slice(-12);
+    if (!lastUser) {
+      const reply = isKa ? "როგორ დაგეხმაროთ?" : "How can I help you?";
+      return NextResponse.json({ reply });
+    }
 
-    const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      temperature: 0.4,
-      messages: [{ role: "system", content: SYSTEM_PROMPT }, ...trimmed],
-    });
+    const products = await loadProducts();
+    const q = lastUser.toLowerCase();
 
-    const raw = completion.choices[0]?.message?.content ?? "";
-
-    // Strip Calendly links; UI shows the button instead.
-    const cleaned = raw
-      .replace(/\[.*?\]\(https?:\/\/calendly\.com[^\)]*\)/gi, "")
-      .replace(/https?:\/\/calendly\.com[^\s)]+/gi, "")
-      .trim();
-
-    // Simple lead signal: email in reply or provided
-    const hasEmailInReply = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(raw);
-    const maybeLead = hasEmailInReply || Boolean(parsed.lead?.email);
-
-    if (maybeLead && WEBHOOK) {
-      const payload = {
-        source: "chatbot",
-        lead: parsed.lead ?? ({} as Lead),
-        rawReply: raw,
-        when: new Date().toISOString(),
-      };
-      try {
-        await fetch(WEBHOOK, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-      } catch (e) {
-        console.error("Lead webhook error:", e);
+    // 1) If user mentioned an explicit product id like P1001, return that product details
+    const idMatch = q.match(/(p\d{3,6})/i);
+    if (idMatch) {
+      const id = idMatch[1].toUpperCase();
+      const found = products.find((p) => p.id.toUpperCase() === id);
+      if (found) {
+        const reply = isKa
+          ? `მიპასუხე: ${found.name} (კოდი ${found.id})\nფასი: ${found.price} ${found.currency || ""}\nზედმეტობა: ${found.stock} ერთეული\nმახასიათებლები: ${Object.entries(found.attributes || {})
+              .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(",") : v}`)
+              .join(", ")}`
+          : `Here you go: ${found.name} (id ${found.id})\nPrice: ${found.price} ${found.currency || ""}\nStock: ${found.stock} unit(s)\nAttributes: ${Object.entries(found.attributes || {})
+              .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(",") : v}`)
+              .join(", ")}`;
+        return NextResponse.json({ reply, matches: [found] });
+      } else {
+        const reply = isKa ? `პროდუქტი ${id} ვერ მოიძებნა.` : `Product ${id} not found.`;
+        return NextResponse.json({ reply, matches: [] });
       }
     }
 
-    return json(req, { reply: cleaned });
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    console.error("Chat error:", msg);
-    return json(req, { error: "bad_request" }, 400);
+    // 2) Heuristic intents: price / availability keywords
+    const asksPrice = /\b(price|ფასი|how much|what(?:'s| is) the price)\b/i.test(lastUser);
+    const asksAvailability = /\b(stock|availability|in stock|out of stock|მასაჟი|არ არის|ნათქვამი|დღევანდელ)\b/i.test(lastUser) || /\b(განკარგვა|აღჭურვა|ქაღალდი)\b/i.test(lastUser);
+
+    // 3) Search products by name/category/attributes fuzzy
+    const terms = q.split(/\s+/).filter(Boolean);
+    const results = products.filter((p) => {
+      const hay = `${p.name} ${p.category || ""} ${p.id} ${JSON.stringify(p.attributes || {})}`.toLowerCase();
+      // require at least one term match
+      return terms.some((t) => hay.includes(t));
+    });
+
+    // If no results by terms, fallback to broader name contains
+    const fallback = products.filter((p) => p.name.toLowerCase().includes(q) || (p.category || "").toLowerCase().includes(q));
+    const finalMatches = results.length ? results : fallback;
+
+    if (finalMatches.length === 0) {
+      // As a last resort, check if message contains numeric ranges (e.g., "under 100")
+      // and return top items
+      const reply = isKa
+        ? "ვერც ერთ პროდუქტი ვერ მოიძებნა თქვენი აღწერილობით. სცადეთ სხვა სიტყვით ან გამოიყენეთ პროდუქტის კოდი."
+        : "No products matched your query. Try different keywords or provide a product id.";
+      return NextResponse.json({ reply, matches: [] });
+    }
+
+    // Build a friendly reply summarizing top 3 matches
+    const top = finalMatches.slice(0, 3);
+    const summaries = top.map((p) => fmtProductShort(p, isKa));
+    let reply = "";
+
+    if (asksPrice && top.length === 1) {
+      const p = top[0];
+      reply = isKa
+        ? `${p.name} (კოდი ${p.id}) ფასი: ${p.price} ${p.currency || ""}. სტატიები: ${p.stock}`
+        : `${p.name} (id ${p.id}) price: ${p.price} ${p.currency || ""}. Stock: ${p.stock}`;
+    } else if (asksAvailability && top.length === 1) {
+      const p = top[0];
+      reply = isKa
+        ? `${p.name} (კოდი ${p.id}) ამჟამად ${p.stock > 0 ? `ახალი რაოდენობა: ${p.stock}` : "არ არის მარაგში"}.`
+        : `${p.name} (id ${p.id}) is currently ${p.stock > 0 ? `in stock (${p.stock})` : "out of stock"}.`;
+    } else {
+      // general listing
+      if (isKa) {
+        reply = `პასუხი მივიღეთ შემდეგი პროდუქციიდან:\n\n${summaries.join("\n\n")}\n\nთუ გჭირდებათ კონკრეტული ფასი ან მარაგი, მოდით მომწერეთ კონკრეტული პროდუქტის კოდი ან ჰკითხეთ \"ფასი\" ან \"მარაგი\".`;
+      } else {
+        reply = `I found the following products matching your query:\n\n${summaries.join("\n\n")}\n\nIf you need price or availability for a specific item, reply with the product id or ask "price" / "stock".`;
+      }
+    }
+
+    return NextResponse.json({ reply, matches: finalMatches });
+  } catch (err: any) {
+    console.error("POST /api/chat error:", err);
+    return NextResponse.json({ error: err?.message ?? "unknown" }, { status: 500 });
   }
 }
