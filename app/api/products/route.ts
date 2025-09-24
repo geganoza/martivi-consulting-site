@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 
+export const dynamic = "force-dynamic";
 type Product = {
   id: string;
   name: string;
