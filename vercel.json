@@ -1,7 +1,12 @@
 {
   "rewrites": [
-    { "source": "/caib", "destination": "https://caib-landing.vercel.app/caib" },
-    { "source": "/caib/", "destination": "https://caib-landing.vercel.app/caib" },
-    { "source": "/caib/:path*", "destination": "https://caib-landing.vercel.app/caib/:path*" }
+    {
+      "source": "/caib/:path((?:.*))",
+      "destination": "https://caib-landing.vercel.app/caib/:path"
+    },
+    {
+      "source": "/caib",
+      "destination": "https://caib-landing.vercel.app/caib"
+    }
   ]
 }
