@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Deletion - MARTIVI ADS MANAGER</title>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6;color:#333}
+h1{color:#12324C;border-bottom:2px solid #578096;padding-bottom:10px}
+h2{color:#12324C;margin-top:30px}
+h3{color:#12324C;margin-top:24px}
+.meta{color:#666;font-style:italic}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:0.95em}
+th,td{border:1px solid #ddd;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f5f5f5;color:#12324C}
+code{background:#f5f5f5;padding:2px 5px;border-radius:3px;font-size:0.9em}
+hr{border:0;border-top:1px solid #eee;margin:2em 0}
+a{color:#1390ac}</style>
+</head>
+<body>
+<h1>Data Deletion — MARTIVI ADS MANAGER</h1>
+<p><strong>Last updated:</strong> 2026-05-16</p>
+<p>Martivi Digital LLC ("we") respects your right to control your data. This page explains how to request deletion of any data the <strong>MARTIVI ADS MANAGER</strong> Facebook application (App ID <code>1131335258922007</code>) has accessed or stored about you, your Facebook account, or any Meta business asset you authorized.</p>
+<hr />
+<h2>Two ways to request deletion</h2>
+<h3>Option 1 — Through Facebook (recommended)</h3>
+<ol>
+<li>Open https://www.facebook.com/settings?tab=applications</li>
+<li>Find <strong>MARTIVI ADS MANAGER</strong> in your installed apps</li>
+<li>Click <strong>Remove</strong></li>
+</ol>
+<p>Facebook will send us a deletion request automatically. We act on the request within 30 days.</p>
+<h3>Option 2 — Email us directly</h3>
+<p>Send an email to <strong>privacy@martividigital.com</strong> with:</p>
+<ul>
+<li>Subject: <code>Data deletion request — MARTIVI ADS MANAGER</code></li>
+<li>The Facebook account, Page, Business Manager, or Ad Account identifier you want deleted</li>
+<li>A brief description of what you'd like deleted (all data, specific assets, etc.)</li>
+</ul>
+<p>We will:
+- Acknowledge your request within 3 business days
+- Complete deletion within 30 days
+- Send a confirmation email when complete</p>
+<p>If we cannot fulfill the request (for example, where retention is required to comply with law), we will tell you why and what we can do instead.</p>
+<hr />
+<h2>What gets deleted</h2>
+<p>We delete (or de-identify) all Platform Data we hold that relates to your request, including:</p>
+<ul>
+<li>OAuth access tokens and System User credentials linked to your account or Business</li>
+<li>Cached ad account, campaign, ad set, ad, and insight data</li>
+<li>Cached Page content and metadata</li>
+<li>Cached catalog data</li>
+<li>Ad creatives we generated or stored on your behalf</li>
+<li>Operational logs containing your identifiers</li>
+</ul>
+<p>We may retain:</p>
+<ul>
+<li>Anonymized, aggregated analytics that cannot be linked to you</li>
+<li>Records of the deletion request itself, for 24 months, to evidence compliance</li>
+<li>Data we are legally required to retain (e.g., for tax, audit, or regulatory purposes)</li>
+</ul>
+<hr />
+<h2>Confirmation</h2>
+<p>If you submitted via Facebook (Option 1), Facebook itself confirms back to you that we processed the request. We also accept a confirmation_code at this endpoint:</p>
+<p><strong>Confirmation endpoint:</strong> <code>https://martiviconsulting.com/api/data-deletion/status?id={confirmation_code}</code></p>
+<p>This endpoint returns a JSON response describing the status of your deletion request. You will receive the <code>confirmation_code</code> either by email (Option 2) or as part of Facebook's response (Option 1).</p>
+<hr />
+<h2>Questions</h2>
+<p>Email <strong>privacy@martividigital.com</strong> or write to:</p>
+<p>Martivi Digital LLC
+Tbilisi, Georgia
++995 577 27 30 90</p>
+</body>
+</html>
