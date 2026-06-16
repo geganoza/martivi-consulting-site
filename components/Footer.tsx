@@ -12,7 +12,15 @@ export default function Footer() {
       style={{ backgroundImage: "url('/images/footer-bg.png')" }}
     >
       <div className="flex w-full flex-wrap items-center justify-between gap-y-4">
-        <p className="text-white">{t("footer.copyright")}</p>
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
+          <p className="text-white">{t("footer.copyright")}</p>
+          <a
+            href="/caib/en"
+            className="text-white underline-offset-2 hover:underline"
+          >
+            CAIB — AI Brain for business
+          </a>
+        </div>
         <address className="flex flex-wrap items-center gap-x-3 gap-y-2 not-italic text-white">
           <a
             href="mailto:contact@martiviconsulting.com"
