@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
           <p className="text-white">{t("footer.copyright")}</p>
           <a
-            href="/caib/en"
+            href="https://martiviconsulting.com/caib/en"
             className="text-white underline-offset-2 hover:underline"
           >
             CAIB — AI Brain for business
